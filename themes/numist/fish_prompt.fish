@@ -1,4 +1,4 @@
-# name: Numist
+# name: numist
 function fish_prompt
   set -l last_status $status
 
@@ -98,7 +98,7 @@ function fish_prompt
   # \__ \\ V /| | | |
   # |___/ \_/ |_| |_|
   #                 
-  if svn info ^/dev/null > /dev/null
+  if command svn info ^/dev/null > /dev/null
     function _svn_branch_name
       set -l revision (command svn info | grep -e "^Revision: " | awk '{print $NF}')
       set -l last_change_rev (command svn info | grep -e "^Last Changed Rev: " | awk '{print $NF}')
@@ -124,7 +124,7 @@ function fish_prompt
   # | (_| | | |_ 
   #  \__, |_|\__|
   #  |___/        
-  if git rev-parse --is-inside-work-tree ^/dev/null > /dev/null
+  if command git rev-parse --is-inside-work-tree ^/dev/null > /dev/null
     function _git_branch_name
       # Get the current branch name or commit
       set -l git_branch_name (command git symbolic-ref HEAD ^/dev/null | sed -e 's|^refs/heads/||')
